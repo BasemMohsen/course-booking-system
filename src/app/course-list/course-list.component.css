@@ -1,0 +1,49 @@
+/* Styles for course list */
+.course-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 16px;
+	padding: 16px;
+	max-width: 980px;
+	margin: 16px auto;
+}
+
+.course-card {
+	border: 1px solid #e6e9ee;
+	border-radius: 8px;
+	padding: 16px;
+	background: #ffffff;
+	box-shadow: 0 2px 6px rgba(16,24,40,0.04);
+	transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.course-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 8px 20px rgba(16,24,40,0.08);
+}
+
+.course-card h3 {
+	margin: 0 0 8px 0;
+	font-size: 1.25rem;
+	color: #0f172a;
+}
+
+.course-card p {
+	margin: 6px 0;
+	color: #334155;
+}
+
+.course-card button {
+	margin-top: 8px;
+	background: linear-gradient(180deg,#2563eb,#1e40af);
+	color: white;
+	border: none;
+	padding: 8px 12px;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.course-card button:hover {
+	filter: brightness(0.95);
+}
+
