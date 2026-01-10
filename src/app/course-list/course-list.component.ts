@@ -1,32 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CourseCardComponent } from '../course-card/course-card.component';
+import { Course } from '../models/course.model';
+import { CourseService } from '../services/course.service';
 
 @Component({
   selector: 'app-course-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CourseCardComponent],
   templateUrl: './course-list.component.html',
   styleUrl: './course-list.component.css'
 })
-export class CourseListComponent {
+export class CourseListComponent implements OnInit {
   // Static list of courses for the component
-  courses = [
-    {
-      title: 'Angular Fundamentals',
-      description: 'Learn the basics of Angular including components, templates and data binding.',
-      price: 99.99,
-      date: '2026-02-15'
-    },
-    {
-      title: 'Advanced Angular Patterns',
-      description: 'Deep dive into advanced topics: performance, change detection and NgRX patterns.',
-      price: 149.99,
-      date: '2026-03-10'
-    }
-  ];
+  courses: Course[] = [];
+  // wishlist holds course ids
+  wishlist = new Set<number>();
 
-  viewDetails(course: any) {
+  constructor(private courseService: CourseService) {}
+
+  ngOnInit() : void{
+    // Perform any initialization logic here
+    console.log('Course list initialized');
+    this.courses = this.courseService.getCourses();
+  }
+
+  viewDetails(course: Course) {
     // placeholder action — replace with router navigation or modal as needed
-    console.log('View details for', course.title);
+    alert(`View details for ${course.title}`);
+  }
+
+  toggleWishlist(course: Course) {
+    if (this.wishlist.has(course.id)) {
+      this.wishlist.delete(course.id);
+    } else {
+      this.wishlist.add(course.id);
+    }
+  }
+
+  isWished(course: any) {
+    return this.wishlist.has(course.id);
+  }
+
+  get wishedCourses() {
+    return this.courses.filter(c => this.wishlist.has(c.id));
   }
 }

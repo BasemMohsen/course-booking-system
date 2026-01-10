@@ -1,13 +1,4 @@
-/* Styles for course list */
-.course-list {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-	gap: 16px;
-	padding: 16px;
-	max-width: 980px;
-	margin: 16px auto;
-}
-
+/* Card styles moved from course-list component to card component */
 .course-card {
 	border: 1px solid #e6e9ee;
 	border-radius: 8px;
@@ -67,12 +58,13 @@
 	font-size: 0.75rem;
 }
 
-.wishlist {
-	max-width: 980px;
-	margin: 16px auto;
-	padding: 12px;
-	border-top: 1px dashed #e6e9ee;
+.wish {
+	background: transparent;
+	border: none;
+	font-size: 1.25rem;
+	cursor: pointer;
+	margin-left: 8px;
 }
 
-.wishlist ul { list-style: disc; margin-left: 18px; }
+.wish:hover { filter: brightness(0.9); }
 

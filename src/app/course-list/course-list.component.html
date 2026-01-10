@@ -1,9 +1,13 @@
 <div class="course-list">
-	<div *ngFor="let course of courses" class="course-card">
-		<h3>{{ course.title }}</h3>
-		<p>{{ course.description }}</p>
-		<p><strong>Price:</strong> ${{ course.price }}</p>
-		<p><strong>Date:</strong> {{ course.date }}</p>
-		<button (click)="viewDetails(course)">View details</button>
-	</div>
+			<div *ngFor="let course of courses">
+				<app-course-card [course]="course" [wished]="isWished(course)" (toggleWish)="toggleWishlist($event)"></app-course-card>
+			</div>
+
+				<section class="wishlist">
+					<h4>Wishlist</h4>
+					<ul>
+						<li *ngFor="let c of wishedCourses">{{ c.title }}</li>
+						<li *ngIf="wishedCourses.length === 0">No items in wishlist</li>
+					</ul>
+				</section>
 </div>

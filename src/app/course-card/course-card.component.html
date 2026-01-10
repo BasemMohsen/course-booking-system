@@ -1,0 +1,16 @@
+<div class="course-card">
+	<h3>
+		{{ course?.title }}
+		<span class="sale" *ngIf="course?.onSale">On Sale</span>
+		<span class="sold-out" *ngIf="course?.soldout">Sold out</span>
+	</h3>
+	<p>{{ course?.description }}</p>
+	<p><strong>Price:</strong> {{ course?.price | currency:'USD' }}</p>
+	<p><strong>Date:</strong> {{ course?.date | date:'longDate' }}</p>
+	<img [src]="course?.image" alt="{{ course?.title }}" width="100" />
+	<button class="wish" (click)="onToggleWish($event)">
+		<span *ngIf="wished">❤</span>
+		<span *ngIf="!wished">♡</span>
+	</button>
+	<button (click)="viewDetails()">View details</button>
+</div>
